@@ -26,3 +26,19 @@ for n in [1, 2, 4, 8]
         "Composite Midpoint Rule ($n subintervals): F = $F_compmidpoint, Error = $relerror_compmidpoint",
     )
 end
+
+##
+# Problem 9
+
+f(x) = x^2 * cos(10 *x^2)
+F_analytic = -0.03925821571649867
+
+
+for n in 2:4
+    intrule_guasslegendre = GaussLegendre(order=n)
+    F_gausslegendre = intrule_guasslegendre(f, a, b)
+    relerror_gausslegendre = abs(F_gausslegendre - F_analytic) / abs(F_analytic)
+    println(
+        "Guass Legendre Quadrature (order $n): F = $F_gausslegendre, Error = $relerror_gausslegendre",
+    )
+end
